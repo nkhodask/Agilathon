@@ -30,7 +30,7 @@ public class PolicyController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = List.class),
             @ApiResponse(code = 401, message = "Unauthorized"), @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"), @ApiResponse(code = 500, message = "Failure") })
-    @RequestMapping(value = "/retrieve/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/retrieve/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<PolicyDetailsEntity> fetchPolicyDetails(@PathVariable long id)
     {
         List<PolicyDetailsEntity> policyDetailsList = fetchPolicyDetailsService.fetchDetails(id);
