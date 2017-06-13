@@ -12,6 +12,7 @@ import java.util.List;
 public interface FetchPolicyDetailsRepository extends CrudRepository<PolicyDetailsEntity, Long>
 {
 
-    List<PolicyDetailsEntity> findByPolicyNumber(long apiAudId);
+    PolicyDetailsEntity findOneByPolicyNumber(long apiAudId);
+    void delete(long apiAudId);
 
 }

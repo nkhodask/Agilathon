@@ -11,5 +11,7 @@ import java.util.List;
 @Component
 public interface FetchPolicyDetailsService {
 
-    public List<PolicyDetailsEntity> fetchDetails(long id);
+    public PolicyDetailsEntity fetchDetails(long id);
+    public void deletePolicy(long id);
+    public void addPolicy(PolicyDetailsEntity policyDetailsEntity);
 }

@@ -17,7 +17,17 @@ public class FetchPolicyDetailsServiceImpl implements FetchPolicyDetailsService
     private FetchPolicyDetailsRepository fetchPolicyDetailsRepository;
 
     @Override
-    public List<PolicyDetailsEntity> fetchDetails(long id) {
-        return fetchPolicyDetailsRepository.findByPolicyNumber(id);
+    public PolicyDetailsEntity fetchDetails(long id) {
+        return fetchPolicyDetailsRepository.findOneByPolicyNumber(id);
+    }
+
+    @Override
+    public void addPolicy(PolicyDetailsEntity policyDetailsEntity) {
+        fetchPolicyDetailsRepository.save(policyDetailsEntity);
+    }
+
+    @Override
+    public void deletePolicy(long id) {
+      fetchPolicyDetailsRepository.delete(id);
     }
 }
