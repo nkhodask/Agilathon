@@ -114,44 +114,63 @@
 		</dependency>
 	</dependencies>
 	<build>
-	<pluginManagement>
+
+
+
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
+				<version>2.4</version>
 				<configuration>
-					<formats>
-						<format>html</format>
-						<format>xml</format>
-					</formats>
-					<aggregate>true</aggregate>
+					<instrumentation>
+						<includes>
+							<include>com/demo/policy/policydetails/service/FetchPolicyDetailsServiceImpl.class</include>
+						</includes>
+					</instrumentation>
 				</configuration>
 				<executions>
 					<execution>
-						<phase>package</phase>
+						<id>clean</id>
+						<phase>pre-site</phase>
 						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>instrument</id>
+						<phase>site</phase>
+						<goals>
+							<goal>instrument</goal>
 							<goal>cobertura</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	</pluginManagement>
 
-
-		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
+
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- use mvn cobertura:cobertura to generate cobertura reports -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 
 </project>
